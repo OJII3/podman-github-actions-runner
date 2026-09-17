@@ -19,6 +19,9 @@ Podman socket を利用するためです。
 - GitHub Actions runner を登録できる権限
 - Unity build 用の十分なディスク容量とメモリ
 
+Nix を使う場合は、リポジトリ直下で `nix develop` を実行すると、Podman、
+`podman compose` の provider、Docker CLI が利用できます。
+
 runner を起動するユーザーで rootless socket を有効化します。
 
 ```sh
