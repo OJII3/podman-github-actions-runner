@@ -12,3 +12,7 @@ _work/
 # Local build context and logs
 *.log
 *.tar.gz
+
+# direnv
+/.direnv/
+/.envrc
