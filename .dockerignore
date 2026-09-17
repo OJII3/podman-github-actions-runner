@@ -1,0 +1,9 @@
+.git
+.env
+*.env
+!.env.example
+.runner
+.credentials*
+_diag
+_work
+*.tar.gz

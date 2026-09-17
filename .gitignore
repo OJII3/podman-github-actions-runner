@@ -1,0 +1,14 @@
+# Local configuration and credentials
+.env
+*.env
+!.env.example
+
+# GitHub Actions runner state
+.runner
+.credentials*
+_diag/
+_work/
+
+# Local build context and logs
+*.log
+*.tar.gz

@@ -1,0 +1,26 @@
+services:
+  runner:
+    build:
+      context: .
+      dockerfile: Containerfile
+
+    working_dir: "${RUNNER_ROOT:?Set RUNNER_ROOT in .env}"
+    restart: unless-stopped
+
+    env_file:
+      - .env
+
+    environment:
+      DOCKER_HOST: unix:///var/run/docker.sock
+      RUNNER_ROOT: "${RUNNER_ROOT:?Set RUNNER_ROOT in .env}"
+      # Rootless Podman maps container root to the host user running Podman.
+      RUNNER_ALLOW_RUNASROOT: "1"
+
+    volumes:
+      # This absolute path must be identical inside the runner and on the host.
+      - "${RUNNER_ROOT:?Set RUNNER_ROOT in .env}:${RUNNER_ROOT:?Set RUNNER_ROOT in .env}"
+      - "${PODMAN_SOCKET:?Set PODMAN_SOCKET in .env}:/var/run/docker.sock"
+
+    # Required when the host uses SELinux. It is harmless on Ubuntu without SELinux.
+    security_opt:
+      - label=disable
