@@ -12,6 +12,7 @@ RUN apt-get update \
       git \
       git-lfs \
       jq \
+      rsync \
       unzip \
       zip \
       libicu74 \
